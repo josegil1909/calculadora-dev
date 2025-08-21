@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom tokens (opcional) */
+:root {
+  --radius: 10px;
+  /* palette light */
+  --color-bg: #f8fafc;
+  --color-fg: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #cbd5e1;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f5f9;
+  --color-surface-hover: #f8fafc;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-danger: #dc2626;
+  --shadow-sm: 0 1px 2px -1px rgba(0,0,0,.1),0 1px 1px -1px rgba(0,0,0,.04);
+  --shadow-inset: 0 0 0 1px rgba(255,255,255,0.02),0 1px 2px -1px rgba(0,0,0,0.7);
+}
+
+.dark:root, .dark {
+  --color-bg: #020617;
+  --color-fg: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-border: #1e293b;
+  --color-surface: #0f172a;
+  --color-surface-alt: #162132;
+  --color-surface-hover: #1e293b;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-danger: #f87171;
+}
+
+body { font-family: theme('fontFamily.sans'); background-color: var(--color-bg); color: var(--color-fg); }
+
+/* Unified surface styling via tokens */
+.surface { border:1px solid var(--color-border); border-radius:0.75rem; box-shadow:var(--shadow-sm); background:var(--color-surface); transition:background-color .2s,color .2s,border-color .2s, box-shadow .2s; }
+.dark .surface { box-shadow:var(--shadow-inset); }
+.surface:hover { background:var(--color-surface-hover); }
+
+.select-caret:after { content:'▾'; position:absolute; right:0.5rem; top:0.4rem; font-size:10px; pointer-events:none; color:var(--color-muted); }
+.dark .select-caret:after { color:var(--color-muted); }
+
+/* Utility classes using design tokens */
+.bg-app { background: var(--color-bg); }
+.text-app { color: var(--color-fg); }
+.text-muted { color: var(--color-muted); }
+.border-default { border-color: var(--color-border); }
+.bg-surface { background: var(--color-surface); }
+.bg-surface-alt { background: var(--color-surface-alt); }
+.btn-primary { background: var(--color-accent); color:#fff; }
+.btn-primary:hover { background: var(--color-accent-hover); }
+.btn-danger { background: var(--color-danger); color:#fff; }
+.focus-ring:focus { outline:2px solid var(--color-accent); outline-offset:2px; }
+/* Button variants */
+.btn-subtle { background: var(--color-surface-alt); color: var(--color-fg); border:1px solid var(--color-border); }
+.btn-subtle:hover { background: var(--color-surface); }
+.btn-outline { background: transparent; color: var(--color-fg); border:1px solid var(--color-border); }
+.btn-outline:hover { background: var(--color-surface-alt); }
+.btn-ghost { background: transparent; color: var(--color-muted); }
+.btn-ghost:hover { color: var(--color-fg); background: var(--color-surface-alt); }
+/* Inputs */
+.ui-input, .ui-select { font-family: inherit; line-height:1.2; }
+.ui-input:disabled, .ui-select:disabled { opacity:.6; cursor:not-allowed; }
